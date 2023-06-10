@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API to access todo items",
+  "main": "api.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage --watch"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^29.5.0",
+    "@babel/preset-env": "^7.21.5"
+  },
+  "author": "Ivan",
+  "license": "ISC"
+}
