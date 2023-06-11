@@ -10,11 +10,12 @@ let deleteButtons = document.getElementsByClassName('delete-button');
 // 1. reset items to default
 // 2. render the page
 document.addEventListener('DOMContentLoaded', function () {
-  api.resetToDefaultItems()
   renderPage()
 
   //submit form is never deleted, event listener can be registered here
   registerEventListenerForTodoFormSubmit()
+  registerEventListenerForRemoveAll()
+  registerEventListenerForResetDefault()
 });
 
 function renderPage() {
@@ -37,6 +38,20 @@ function putFocusIntoTodoInput() {
   const focusOptions = {focusVisible: "true"}
   // noinspection JSCheckFunctionSignatures
   todoInput.focus(focusOptions)
+}
+
+function registerEventListenerForRemoveAll() {
+  const removeAllButton = document.getElementById('remove-all');
+  removeAllButton.addEventListener('click', () => {
+    resetItems()
+  })
+}
+
+function registerEventListenerForResetDefault() {
+  const resetDefaultButton = document.getElementById('reset-default');
+  resetDefaultButton.addEventListener('click', () => {
+    resetDefaultItems()
+  })
 }
 
 function registerEventListenerForTodoFormSubmit() {
@@ -98,6 +113,16 @@ function addTodo() {
 
 function deleteTodo(index) {
   api.deleteItem(index)
+  renderPage()
+}
+
+function resetItems() {
+  api.resetItems()
+  renderPage()
+}
+
+function resetDefaultItems() {
+  api.resetToDefaultItems()
   renderPage()
 }
 

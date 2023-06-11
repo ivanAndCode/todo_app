@@ -41,7 +41,6 @@ export function remove(index) {
   for (const item of currentItems) {
     write(item)
   }
-
 }
 
 export function reset() {

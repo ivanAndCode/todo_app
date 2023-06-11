@@ -3,7 +3,7 @@ import {read, remove, reset, resetToDefaultItems, write} from "./db"
 const defaultItems = ["Buy Milk", "Relax", "Complete all tasks"]
 
 beforeEach(() => {
-  resetToDefaultItems() //todo test this method
+  resetToDefaultItems()
 })
 
 describe('Database tests', () => {
