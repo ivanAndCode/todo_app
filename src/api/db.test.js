@@ -1,9 +1,9 @@
-import {read, remove, reset, resetToDefault, write} from "./db"
+import {read, remove, reset, resetToDefaultItems, write} from "./db"
 
 const defaultItems = ["Buy Milk", "Relax", "Complete all tasks"]
 
 beforeEach(() => {
-  resetToDefault() //todo test this method
+  resetToDefaultItems() //todo test this method
 })
 
 describe('Database tests', () => {
@@ -14,7 +14,7 @@ describe('Database tests', () => {
         const itemsBefore = read();
         expect(itemsBefore.length).toBe(0)
 
-        resetToDefault()
+        resetToDefaultItems()
         const items = read();
         expect(items.length).toBe(3)
       })
@@ -23,7 +23,7 @@ describe('Database tests', () => {
         reset()
         write('First unique item')
 
-        resetToDefault()
+        resetToDefaultItems()
         const items = read();
         expect(items.length).toBe(3)
         for (const defaultItem of defaultItems) {

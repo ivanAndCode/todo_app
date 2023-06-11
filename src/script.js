@@ -5,21 +5,54 @@ let todoInput = document.getElementById('todo-input');
 let todoList = document.getElementById('todo-list');
 let deleteButtons = document.getElementsByClassName('delete-button');
 
+//this is an entry point
+// it will:
+// 1. reset items to default
+// 2. render the page
+document.addEventListener('DOMContentLoaded', function () {
+  api.resetToDefaultItems()
+  renderPage()
+
+  //submit form is never deleted, event listener can be registered here
+  registerEventListenerForTodoFormSubmit()
+});
+
 function renderPage() {
   renderTodoList()
+  cleanTodoInputValue()
+  putFocusIntoTodoInput()
   renderTodoListLengthWarning()
+
+  //delete buttons are dynamic, registering event listeners each time page changes
   registerEventListenersForDeleteButtons()
 }
 
+function cleanTodoInputValue() {
+  todoInput.value = ''
+}
+
+function putFocusIntoTodoInput() {
+  //this will not only put focus, but also visually select input element
+  //https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#focus_on_a_text_field
+  const focusOptions = {focusVisible: "true"}
+  // noinspection JSCheckFunctionSignatures
+  todoInput.focus(focusOptions)
+}
+
+function registerEventListenerForTodoFormSubmit() {
+  todoForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addTodo();
+  });
+}
+
 function registerEventListenersForDeleteButtons() {
-  //register listener for the delete buttons
   deleteButtons = document.getElementsByClassName('delete-button');
-  console.log(deleteButtons.length)
-  for (const deleteButton of deleteButtons) {
-    console.log('AAA')
-    console.log(JSON.stringify(deleteButton))
-    deleteButton.addEventListener('click', function (e) {
-      deleteTodo(e)
+  const deleteButtonsArray = [].slice.call(deleteButtons);
+
+  for (const deleteButton of deleteButtonsArray) {
+    deleteButton.addEventListener('click', (index) => {
+      deleteTodo(index)
     });
   }
 }
@@ -33,8 +66,6 @@ function renderTodoList() {
     li.innerHTML = getInnerHtmlOfTodoItem(todo, index);
     todoList.appendChild(li);
   });
-
-  todoInput.focus()
 }
 
 function getInnerHtmlOfTodoItem(todoItem, index) {
@@ -46,62 +77,37 @@ function getInnerHtmlOfTodoItem(todoItem, index) {
 
 function addTodo() {
   const todoText = todoInput.value.trim();
+
+  if (todoInput.value.length === 0) {
+    console.log('User did not enter anything')
+  }
+
   if (todoText !== todoInput.value) {
-    //todo this is a business logic, needs to be tested
     console.log('Todo input value has been trimmed')
   }
 
-  if (todoText !== '') {
-    api.addItem(todoText);
-    renderPage();
-    todoInput.value = '';
+  if (todoText.length === 0) {
+    renderPage()
+    return
   }
+
+  api.addItem(todoText);
+  renderPage();
+  todoInput.value = '';
 }
 
-function deleteTodo(e) {
-  console.log(JSON.stringify(e))
-  // api.deleteItem(index)
-  // console.log('after deleting item ')
-
-  const todos = api.getCurrentItems()
-  const button = document.querySelector(`#delete-button`);
-  button.addEventListener('click', (e) => {
-    console.log(e)
-  })
-  const li = button.parentElement;
-  li.remove();
-  todos.splice(index, 1);
-
+function deleteTodo(index) {
+  api.deleteItem(index)
   renderPage()
 }
 
 function renderTodoListLengthWarning() {
   const todos = api.getCurrentItems() //todo fix this to use cookie value
-  const todoList = document.getElementById('todo-list');
-  const todoItems = todoList.getElementsByTagName('li');
   const banner = document.getElementById('banner');
 
-  if (todoItems.length > 10) {
+  if (todos.length > 10) {
     banner.style.display = 'block';
   } else {
     banner.style.display = 'none';
   }
 }
-
-//register listener for the add button
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('Reload happened')
-  api.resetToDefaultItems()
-  //load initial list after the page is loaded
-  const todos = api.getCurrentItems()
-  if (todos.length > 0) {
-    renderPage()
-  }
-});
-
-
-todoForm.addEventListener('submit', (event) => {
-  console.log('Submitted form to add todo')
-  event.preventDefault();
-  addTodo();
-});

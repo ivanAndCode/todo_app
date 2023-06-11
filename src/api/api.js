@@ -9,14 +9,12 @@ export function addItem(item) {
 }
 
 export function deleteItem(index) {
-  //todo
-  console.log('fsfddfgfdgdf')
+  db.remove(index)
 }
 
 export function resetToDefaultItems() {
-  db.resetToDefault()
+  db.resetToDefaultItems()
 }
-
 
 export function resetItems() {
   db.reset()
