@@ -5,10 +5,10 @@ let todoInput = document.getElementById('todo-input');
 let todoList = document.getElementById('todo-list');
 let deleteButtons = document.getElementsByClassName('delete-button');
 
-//this is an entry point
+//this event listener is an entry point
 // it will:
-// 1. reset items to default
-// 2. render the page
+// 1. render the page
+// 2. register other event listeners for the buttons
 document.addEventListener('DOMContentLoaded', function () {
   renderPage()
 
@@ -66,8 +66,8 @@ function registerEventListenersForDeleteButtons() {
   const deleteButtonsArray = [].slice.call(deleteButtons);
 
   for (const deleteButton of deleteButtonsArray) {
-    deleteButton.addEventListener('click', (index) => {
-      deleteTodo(index)
+    deleteButton.addEventListener('click', (event) => {
+      deleteTodo(event.target.name)
     });
   }
 }
@@ -86,7 +86,7 @@ function renderTodoList() {
 function getInnerHtmlOfTodoItem(todoItem, index) {
   return `
       <span class="todo-text">${todoItem}</span>
-      <button id="delete-button-${index}" class="delete-button">X</button>
+      <button id="delete-button-${index}" class="delete-button" name="${index}">X</button>
     `;
 }
 
