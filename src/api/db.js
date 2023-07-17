@@ -1,5 +1,3 @@
-import * as api from "./db";
-
 const cookieName = 'todoItems'
 const delimiter = '\\(^_^)/'
 
@@ -19,25 +17,11 @@ export function read() {
 }
 
 export function write(item) {
-  const currentItems = api.read()
-  const itemsToRecord = currentItems.join(`${delimiter}`)
-
-  currentItems.length === 0 ?
-    document.cookie = `${cookieName}=${item}` :
-    document.cookie = `${cookieName}=${itemsToRecord}${delimiter}${item}`
+  document.cookie = `${cookieName}=${item}`
 }
 
-export function remove(index) {
-  const currentItems = read()
-  if (currentItems.length === 0) {
-    throw new Error('There are no items in the list. Nothing to delete')
-  }
-
-  reset()
-  currentItems.splice(index, 1)
-  for (const item of currentItems) {
-    write(item)
-  }
+export function remove(item) {
+  this.write(item)
 }
 
 export function reset() {
