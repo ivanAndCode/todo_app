@@ -1,3 +1,5 @@
+import * as api from "./db";
+
 const cookieName = 'todoItems'
 const delimiter = '\\(^_^)/'
 
@@ -8,21 +10,16 @@ const delimiter = '\\(^_^)/'
 //     ?.split("=")[1]
 //     .split("\\(^_^)/");
 export function read() {
-  let result
-  const cookieValue = document.cookie
+  const result = document.cookie
     .split("; ")
     .find((row) => row.startsWith(`${cookieName}=`))
     ?.split("=")[1]
-
-  cookieValue.length === 0 ?
-    result = [] :
-    result = cookieValue.split(delimiter);
 
   return result
 }
 
 export function write(item) {
-  const currentItems = read()
+  const currentItems = api.read()
   const itemsToRecord = currentItems.join(`${delimiter}`)
 
   currentItems.length === 0 ?

@@ -1,7 +1,16 @@
 import * as db from "./db.js";
 
+const delimiter = '\\(^_^)/'
+
 export function getCurrentItems() {
-  return db.read()
+  let result
+  const items = db.read() || ""
+
+  items.length === 0 ?
+    result = [] :
+    result = items.split(delimiter);
+
+  return result
 }
 
 export function addItem(item) {
