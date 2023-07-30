@@ -1,0 +1,15 @@
+{
+  "name": "cypress-tests",
+  "version": "1.0.0",
+  "description": "Tests for the todo app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run *",
+    "open": "npx cypress open"
+  },
+  "author": "Ivan Karaman",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.17.2"
+  }
+}

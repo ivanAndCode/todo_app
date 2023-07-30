@@ -1,0 +1,14 @@
+{
+  "name": "todo-webapp",
+  "version": "1.0.0",
+  "description": "Simple todo list",
+  "main": "script.js",
+  "scripts": {
+    "start-server": "http-server -a localhost -p 8080 -c-1"
+  },
+  "author": "Ivan Karaman",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
