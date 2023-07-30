@@ -8,12 +8,10 @@ const delimiter = '\\(^_^)/'
 //     ?.split("=")[1]
 //     .split("\\(^_^)/");
 export function read() {
-  const result = document.cookie
+  return document.cookie
     .split("; ")
     .find((row) => row.startsWith(`${cookieName}=`))
     ?.split("=")[1]
-
-  return result
 }
 
 export function write(item) {
