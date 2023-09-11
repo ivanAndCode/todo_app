@@ -1,5 +1,6 @@
 # Context
 This is a simple html app with some basic "TODO list" functionality.
+
 ![user interface of the app](./readme/user-interface.png)
 
 # Instructions
