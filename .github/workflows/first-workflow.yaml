@@ -25,4 +25,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
+      - run: cd ./src/webapp && npm ci && npm run start-server
       - run: cd ./e2e/cypress && npm ci && npm run test
