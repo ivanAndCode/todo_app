@@ -33,6 +33,7 @@ jobs:
           curl http://localhost:8080 -I
   run-ui-tests:
     runs-on: ubuntu-latest
+    needs: start-webapp
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
