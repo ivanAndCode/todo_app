@@ -18,3 +18,11 @@ jobs:
         with:
           node-version: '20'
       - run: cd ./src/webapp/api && npm ci && npm run test
+  run-ui-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: cd ./e2e/cypress && npm ci && npm run test
