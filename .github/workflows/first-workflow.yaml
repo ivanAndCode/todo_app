@@ -28,9 +28,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v3
         with:
-          project: ../src/webapp
           working-directory: ../e2e/
-          browser: chrome
-          build: npm ci
-          start: npm run start-server
-          wait-on: "http://localhost:8080"
+          start: |
+            cd ../src/webapp &&
+            npm ci &&
+            npm run start-server &
+            sleep 10 &&
+            curl http://localhost:8080 -I
