@@ -18,13 +18,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - run: |
-          cd ./src/webapp &&
-          npm ci &&
-          npm run start-server &
-          sleep 10 &&
-          curl http://localhost:8080 -I
-      - run: cd ./e2e/cypress && npm ci && npm run test
+#      - run: |
+#          cd ./src/webapp &&
+#          npm ci &&
+#          npm run start-server &
+#          sleep 10 &&
+#          curl http://localhost:8080 -I
+#      - run: cd ./e2e/cypress && npm ci && npm run test
       - name: Cypress run
         uses: cypress-io/github-action@v3
         with:
