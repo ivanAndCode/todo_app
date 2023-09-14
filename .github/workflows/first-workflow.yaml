@@ -28,8 +28,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v3
         with:
-          project: ./src/webapp
-          working-directory: ./e2e/cypress
+          project: ../src/webapp
+          working-directory: ../e2e/cypress
           browser: chrome
           build: npm ci
           start: npm run start-server
