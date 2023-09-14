@@ -29,7 +29,7 @@ jobs:
         uses: cypress-io/github-action@v3
         with:
           project: ../src/webapp
-          working-directory: ../e2e/cypress
+          working-directory: ../e2e/
           browser: chrome
           build: npm ci
           start: npm run start-server
