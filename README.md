@@ -18,7 +18,7 @@ Then you'll be able to navigate to the `localhost:8080` in your browser and use 
 - `npm run test`
 
 ### E2E tests (Cypress)
-- Navigate to the `e2e/cypress` folder
+- Navigate to the `e2e/` folder
 - `npm install`
 - `npm run test`
 
