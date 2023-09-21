@@ -4,6 +4,11 @@ This is a simple html app with some basic "TODO list" functionality.
 ![user interface of the app](./readme/user-interface.png)
 
 # Instructions
+> 21.09.2023 If you were an attendee of the workshop and want to do it again in your spare time.
+> 
+> Please, wait a few days and I will publish the instructions (and some answers) in this repo
+> Thank you for coming! :)
+
 ## Run the app
 - Navigate to the `src/webapp` folder
 - `npm install`
