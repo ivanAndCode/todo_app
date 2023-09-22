@@ -6,8 +6,7 @@ This is a simple html app with some basic "TODO list" functionality.
 # Instructions
 > 21.09.2023 If you were an attendee of the workshop and want to do it again in your spare time.
 > 
-> Please, wait a few days and I will publish the instructions (and some answers) in this repo
-> Thank you for coming! :)
+> Find the file called `instructions.md` and follow the checklist
 
 ## Run the app
 - Navigate to the `src/webapp` folder
