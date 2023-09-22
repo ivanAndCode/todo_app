@@ -9,14 +9,14 @@
     - [ ]  Run the tests
         - [ ]  unit
         - [ ]  UI
-- [ ]  Create a simple workflow with one job and one step “echo ‘Hello TestBash’” and make it executable “on demand”
+- [ ]  Create a simple workflow with one job and one step “echo ‘Hello TestBash’” and make it executable “on push”
     - [ ]  Find an example workflow https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
     - [ ]  create a file in a `.github/workflows/` folder called `my-first-workflow`
-- [ ]  Push the code & Run the workflow in the github
+- [ ]  Push the code & see the workflow run in the github actions tab
 - [ ]  Add a job to run unit tests
 - [ ]  Add the job to run UI tests
 - [ ]  Think about failure & what is wrong
-- [ ]  Fixing the job to have the step to start the webapp before running tests
+- [ ]  Fix the job to have the step to start the webapp before running tests
 - [ ]  Separate big step into two smaller ones for readability
 - [ ]  Think about sequential/parallel execution. Make UI test run only after unit tests have passed.
 - [ ]  Optional: remove the `say-hello` stage
